@@ -1,7 +1,9 @@
-from services.retrieval_service import (
-    RetrievalService
+from services.hybrid_retrieval_service import (
+    HybridRetrievalService
 )
-
+from services.rerank_service import (
+    RerankService
+)
 from llm.llm_client import (
     LLMClient
 )
@@ -15,13 +17,17 @@ class AnswerService:
         top_k: int = 5
     ):
 
-        chunks = (
-            RetrievalService.search(
-                query=question,
-                top_k=top_k
-            )
+        chunks = HybridRetrievalService.search(
+            query=question,
+            top_k=10
         )
 
+        chunks = RerankService.rerank(
+            query=question,
+            chunks=chunks,
+            top_k=3
+        )
+        
         if not chunks:
 
             return {
