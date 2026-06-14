@@ -1,9 +1,15 @@
 from services.hybrid_retrieval_service import (
     HybridRetrievalService
 )
+
 from services.rerank_service import (
     RerankService
 )
+
+from services.graph_retrieval_service import (
+    GraphRetrievalService
+)
+
 from llm.llm_client import (
     LLMClient
 )
@@ -27,7 +33,7 @@ class AnswerService:
             chunks=chunks,
             top_k=3
         )
-        
+
         if not chunks:
 
             return {
@@ -40,6 +46,13 @@ class AnswerService:
                 ),
                 "sources": []
             }
+
+        related_concepts = (
+            GraphRetrievalService
+            .get_related_concepts(
+                question
+            )
+        )
 
         context_parts = []
 
@@ -55,9 +68,23 @@ class AnswerService:
                 chunk["source"]
             )
 
-        context = "\n\n".join(
+        graph_context = "\n".join(
+            related_concepts
+        )
+
+        document_context = "\n\n".join(
             context_parts
         )
+
+        context = f"""
+RELATED CONCEPTS:
+
+{graph_context}
+
+DOCUMENT CONTEXT:
+
+{document_context}
+"""
 
         prompt = f"""
 Answer the question using ONLY
@@ -70,6 +97,9 @@ CONTEXT:
 QUESTION:
 
 {question}
+
+If the answer is not present
+in the context, say so.
 """
 
         answer = (
@@ -81,7 +111,8 @@ QUESTION:
         return {
             "question": question,
             "answer": answer,
-            "sources": list(
-                sources
-            )
+            "related_concepts":
+                related_concepts,
+            "sources":
+                list(sources)
         }
