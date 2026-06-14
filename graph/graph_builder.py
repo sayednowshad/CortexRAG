@@ -11,6 +11,26 @@ class GraphBuilder:
         "data/graph/knowledge_graph.pkl"
     )
 
+    STOP_WORDS = {
+        "Copyright",
+        "Page",
+        "Pages",
+        "Basics",
+        "This",
+        "The",
+        "These",
+        "Those",
+        "When",
+        "You",
+        "HTML",
+        "API",
+        "Interviewbit",
+        "In JDK",
+        "Continued",
+        "Contents",
+        "Java Cheat Sheet"
+    }
+
     _graph = nx.Graph()
 
     @classmethod
@@ -28,7 +48,11 @@ class GraphBuilder:
             set(
                 entity.strip()
                 for entity in entities
-                if len(entity.strip()) > 2
+                if (
+                    len(entity.strip()) > 2
+                    and entity.strip()
+                    not in cls.STOP_WORDS
+                )
             )
         )
 

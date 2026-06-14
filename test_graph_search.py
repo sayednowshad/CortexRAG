@@ -5,8 +5,14 @@ from services.graph_retrieval_service import (
 results = (
     GraphRetrievalService
     .get_related_concepts(
-        "Java"
+        "Java Collections"
     )
 )
 
-print(results)
+print(
+    "Graph Concepts:"
+)
+
+for concept in results:
+
+    print(concept)

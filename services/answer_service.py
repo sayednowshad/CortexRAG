@@ -14,6 +14,14 @@ from llm.llm_client import (
     LLMClient
 )
 
+from memory.memory_manager import (
+    MemoryManager
+)
+
+from memory.memory_retriever import (
+    MemoryRetriever
+)
+
 
 class AnswerService:
 
@@ -54,6 +62,13 @@ class AnswerService:
             )
         )
 
+        memories = (
+            MemoryRetriever
+            .get_relevant_memories(
+                question
+            )
+        )
+
         context_parts = []
 
         sources = set()
@@ -76,7 +91,21 @@ class AnswerService:
             context_parts
         )
 
+        memory_context = "\n\n".join(
+            [
+                (
+                    f"Q: {memory['question']}\n"
+                    f"A: {memory['answer']}"
+                )
+                for memory in memories
+            ]
+        )
+
         context = f"""
+MEMORY:
+
+{memory_context}
+
 RELATED CONCEPTS:
 
 {graph_context}
@@ -98,6 +127,8 @@ QUESTION:
 
 {question}
 
+Use memory if it is relevant.
+
 If the answer is not present
 in the context, say so.
 """
@@ -108,11 +139,18 @@ in the context, say so.
             )
         )
 
+        MemoryManager.save_conversation(
+            question=question,
+            answer=answer
+        )
+
         return {
             "question": question,
             "answer": answer,
             "related_concepts":
                 related_concepts,
+            "memory_hits":
+                len(memories),
             "sources":
                 list(sources)
         }
