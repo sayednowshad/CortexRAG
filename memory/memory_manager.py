@@ -2,6 +2,10 @@ from memory.memory_store import (
     MemoryStore
 )
 
+from memory.memory_embedding_service import (
+    MemoryEmbeddingService
+)
+
 
 class MemoryManager:
 
@@ -11,9 +15,17 @@ class MemoryManager:
         answer
     ):
 
+        embedding = (
+            MemoryEmbeddingService
+            .generate_embedding(
+                question
+            )
+        )
+
         memory = {
             "question": question,
-            "answer": answer
+            "answer": answer,
+            "embedding": embedding
         }
 
         MemoryStore.save_memory(

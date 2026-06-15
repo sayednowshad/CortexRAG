@@ -12,6 +12,8 @@ class GraphBuilder:
     )
 
     STOP_WORDS = {
+    word.lower()
+    for word in {
         "Copyright",
         "Page",
         "Pages",
@@ -30,6 +32,7 @@ class GraphBuilder:
         "Contents",
         "Java Cheat Sheet"
     }
+}
 
     _graph = nx.Graph()
 
@@ -50,7 +53,7 @@ class GraphBuilder:
                 for entity in entities
                 if (
                     len(entity.strip()) > 2
-                    and entity.strip()
+                    and entity.strip().lower()
                     not in cls.STOP_WORDS
                 )
             )

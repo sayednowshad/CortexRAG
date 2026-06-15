@@ -61,6 +61,10 @@ class AnswerService:
                 question
             )
         )
+        print(
+            "Related Concepts:",
+            related_concepts
+        )
 
         memories = (
             MemoryRetriever
