@@ -22,6 +22,17 @@ from memory.memory_retriever import (
     MemoryRetriever
 )
 
+from memory.session_memory import (
+    SessionMemory
+)
+
+from memory.conversation_manager import (
+    ConversationManager
+)
+
+from memory.topic_tracker import (
+    TopicTracker
+)
 
 class AnswerService:
 
@@ -31,13 +42,61 @@ class AnswerService:
         top_k: int = 5
     ):
 
+        conversation_context = (
+            ConversationManager
+            .get_context()
+        )
+
+        pronouns = [
+            "it",
+            "this",
+            "that",
+            "these",
+            "those"
+        ]
+
+        original_question = question
+
+        if any(
+            word in question.lower()
+            for word in pronouns
+        ):
+
+           current_topic = (
+                ConversationManager
+                .get_current_topic()
+            )
+
+           if current_topic:
+
+                question = (
+                    f"{question} "
+                    f"regarding "
+                    f"{current_topic}"
+            )
+
+                print(
+                    "Enhanced Question:",
+                    question
+                )
+
+        enhanced_query = f"""
+Conversation History:
+
+{conversation_context}
+
+Current Question:
+
+{question}
+"""
+
         chunks = HybridRetrievalService.search(
-            query=question,
+            query=enhanced_query,
             top_k=10
         )
 
         chunks = RerankService.rerank(
-            query=question,
+            query=enhanced_query,
             chunks=chunks,
             top_k=3
         )
@@ -45,7 +104,7 @@ class AnswerService:
         if not chunks:
 
             return {
-                "question": question,
+                "question": original_question,
                 "answer":
                 (
                     "I could not find "
@@ -61,6 +120,7 @@ class AnswerService:
                 question
             )
         )
+
         print(
             "Related Concepts:",
             related_concepts
@@ -106,6 +166,10 @@ class AnswerService:
         )
 
         context = f"""
+CONVERSATION HISTORY:
+
+{conversation_context}
+
 MEMORY:
 
 {memory_context}
@@ -131,30 +195,56 @@ QUESTION:
 
 {question}
 
+Use conversation history
+when relevant.
+
 Use memory if it is relevant.
 
 If the answer is not present
 in the context, say so.
 """
+        print(
+            "\nDOCUMENT CONTEXT:\n"
+        )
+
+        print(
+            document_context[:1500]
+        )
 
         answer = (
             LLMClient.generate(
                 prompt
             )
         )
+        
+        TopicTracker.set_topic(
+            original_question
+        )
+
+        SessionMemory.add_message(
+            original_question,
+            answer
+        )
 
         MemoryManager.save_conversation(
-            question=question,
+            question=original_question,
             answer=answer
         )
 
         return {
-            "question": question,
-            "answer": answer,
+            "question":
+                original_question,
+            "answer":
+                answer,
             "related_concepts":
                 related_concepts,
             "memory_hits":
                 len(memories),
+            "conversation_turns":
+                len(
+                    SessionMemory
+                    .get_history()
+                ),
             "sources":
                 list(sources)
         }
