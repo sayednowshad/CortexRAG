@@ -34,6 +34,22 @@ from memory.topic_tracker import (
     TopicTracker
 )
 
+from memory.topic_extractor import (
+    TopicExtractor
+)
+
+from services.query_expansion_service import (
+    QueryExpansionService
+)
+
+from services.multi_query_service import (
+    MultiQueryService
+)
+
+from memory.memory_deduplicator import (
+    MemoryDeduplicator
+)
+
 class AnswerService:
 
     @staticmethod
@@ -57,6 +73,8 @@ class AnswerService:
 
         original_question = question
 
+        current_topic = None
+
         if any(
             word in question.lower()
             for word in pronouns
@@ -67,39 +85,97 @@ class AnswerService:
                 .get_current_topic()
             )
 
-           if current_topic:
+           if not current_topic:
 
-                question = (
-                    f"{question} "
-                    f"regarding "
-                    f"{current_topic}"
+                                    return {
+            "question": original_question,
+            "answer":
+            (
+                "I need more context. "
+                "What does 'it' refer to?"
+            ),
+            "sources": []
+        }
+
+        question = (
+        f"{question} "
+        f"regarding "
+        f"{current_topic}"
+        )
+
+        print(
+        "Enhanced Question:",
+        question
+        )
+        
+        # wait....
+        queries = (
+            MultiQueryService
+            .generate_queries(
+                question
             )
+        )
 
-                print(
-                    "Enhanced Question:",
-                    question
-                )
+        all_chunks = []
 
-        enhanced_query = f"""
+        for query in queries:
+
+            enhanced_query = f"""
 Conversation History:
 
 {conversation_context}
 
 Current Question:
 
-{question}
+{query}
 """
 
-        chunks = HybridRetrievalService.search(
-            query=enhanced_query,
-            top_k=10
+            results = (
+                HybridRetrievalService
+                .search(
+                    query=enhanced_query,
+                    top_k=5
+                )
+            )
+
+            all_chunks.extend(
+                results
+            )
+
+        unique_chunks = {}
+
+        for chunk in all_chunks:
+
+            unique_chunks[
+                chunk["content"]
+            ] = chunk
+
+        chunks = list(
+            unique_chunks.values()
         )
 
-        chunks = RerankService.rerank(
-            query=enhanced_query,
-            chunks=chunks,
-            top_k=3
+        print(
+            f"\nRetrieved Chunks: {len(chunks)}"
         )
+
+        chunks = (
+            RerankService
+            .rerank(
+                query=question,
+                chunks=chunks,
+                top_k=3
+            )
+        )
+        
+        print(
+            "\nFINAL CHUNKS AFTER RERANK:\n"
+        )
+
+        for chunk in chunks:
+
+            print(
+                chunk["source"]
+            )
 
         if not chunks:
 
@@ -115,9 +191,9 @@ Current Question:
             }
 
         related_concepts = (
-            GraphRetrievalService
-            .get_related_concepts(
-                question
+            QueryExpansionService
+            .get_best_concepts(
+            question
             )
         )
 
@@ -207,28 +283,58 @@ in the context, say so.
             "\nDOCUMENT CONTEXT:\n"
         )
 
-        print(
-            document_context[:1500]
-        )
+        print("\nPROMPT:\n")
+        print(prompt[:4000])
 
         answer = (
             LLMClient.generate(
                 prompt
             )
         )
-        
-        TopicTracker.set_topic(
-            original_question
+
+        topic = (
+            TopicExtractor
+            .extract(
+                original_question
+            )
         )
+
+        if topic:
+
+            print(
+                "Current Topic:",
+                topic
+            )
+
+            TopicTracker.set_topic(
+                topic
+            )
 
         SessionMemory.add_message(
             original_question,
             answer
         )
 
-        MemoryManager.save_conversation(
+        if (
+    "I could not find the answer"
+    not in answer
+    ):
+
+         if (
+            MemoryDeduplicator
+            .should_save(
+            original_question
+        )
+    ):
+
+             MemoryManager.save_conversation(
             question=original_question,
             answer=answer
+        )
+
+        else:
+             print(
+            "Duplicate memory skipped."
         )
 
         return {

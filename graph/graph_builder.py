@@ -14,23 +14,25 @@ class GraphBuilder:
     STOP_WORDS = {
     word.lower()
     for word in {
-        "Copyright",
-        "Page",
-        "Pages",
-        "Basics",
-        "This",
-        "The",
-        "These",
-        "Those",
-        "When",
-        "You",
-        "HTML",
-        "API",
-        "Interviewbit",
-        "In JDK",
-        "Continued",
-        "Contents",
-        "Java Cheat Sheet"
+         "Purpose",
+            "Defines",
+            "Cannot",
+            "Understanding",
+            "Limitations",
+            "Examples",
+            "Example",
+            "Page",
+            "Pages",
+            "Copyright",
+            "This",
+            "These",
+            "Those",
+            "What",
+            "When",
+            "One",
+            "Two",
+            "Three",
+            "Java",
     }
 }
 

@@ -54,13 +54,18 @@ class LLMClient:
                             "role": "system",
                             "content":
                             (
-                                "Answer only using "
-                                "the provided context. "
-                                "If the answer is not "
-                                "found, say "
-                                "'I could not find the "
-                                "answer in the knowledge "
-                                "base.'"
+                                  "You are a retrieval "
+                                  "augmented assistant. "
+                                  "Answer using the "
+                                  "provided context. "
+                                  "If relevant information "
+                                  "exists in the context, "
+                                  "summarize it clearly. "
+                                  "Only say 'I could not "
+                                  "find the answer in the "
+                                  "knowledge base.' when "
+                                  "the context contains "
+                                  "no relevant information."
                             )
                         },
                         {
