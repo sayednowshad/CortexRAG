@@ -1,14 +1,20 @@
+import re
+
+
 class EvidenceExtractor:
 
     @staticmethod
     def extract(
         chunks,
         question: str,
-        max_sentences: int = 10
+        max_sentences: int = 15
     ):
 
         keywords = set(
-            question.lower().split()
+            re.findall(
+                r"\w+",
+                question.lower()
+            )
         )
 
         evidence = []
@@ -17,20 +23,23 @@ class EvidenceExtractor:
 
             text = chunk["content"]
 
-            sentences = text.split(".")
+            sentences = re.split(
+                r"[.!?\n]+",
+                text
+            )
 
             for sentence in sentences:
 
                 sentence = sentence.strip()
 
-                if not sentence:
-
+                if len(sentence) < 20:
                     continue
 
-                score = 0
-
                 sentence_words = set(
-                    sentence.lower().split()
+                    re.findall(
+                        r"\w+",
+                        sentence.lower()
+                    )
                 )
 
                 overlap = len(
@@ -39,19 +48,21 @@ class EvidenceExtractor:
                     )
                 )
 
-                score += overlap
+                score = overlap
 
-                evidence.append(
-                    (
-                        score,
-                        sentence,
-                        chunk["source"]
+                if overlap > 0:
+
+                    evidence.append(
+                        (
+                            score,
+                            sentence,
+                            chunk["source"]
+                        )
                     )
-                )
 
         evidence.sort(
-            reverse=True,
-            key=lambda x: x[0]
+            key=lambda x: x[0],
+            reverse=True
         )
 
         best_sentences = []
@@ -61,13 +72,12 @@ class EvidenceExtractor:
         for score, sentence, source in evidence:
 
             if sentence in used:
-
                 continue
 
             used.add(sentence)
 
             best_sentences.append(
-                sentence
+                f"[{source}] {sentence}"
             )
 
             if (
@@ -75,6 +85,15 @@ class EvidenceExtractor:
                 >= max_sentences
             ):
                 break
+
+        if not best_sentences:
+
+            return "\n\n".join(
+                [
+                    chunk["content"][:1000]
+                    for chunk in chunks
+                ]
+            )
 
         return "\n".join(
             best_sentences

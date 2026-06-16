@@ -121,7 +121,7 @@ class AnswerService:
                     "What does 'it' refer to?"
                 ),
                 "sources": []
-        }
+                }
             question = (
                     f"{question} "
                     f"regarding "
@@ -204,6 +204,15 @@ Current Question:
         print(
             "\nFINAL CHUNKS AFTER RERANK:\n"
         )
+        for chunk in chunks:
+
+            print(
+                chunk["source"]
+            )
+            
+        print(
+            "\nRETRIEVED CONTENT:\n"
+        )
         
         rerank_time = (
             time.time()
@@ -212,8 +221,10 @@ Current Question:
 
         for chunk in chunks:
 
+            print("=" * 50)
+
             print(
-                chunk["source"]
+            chunk["content"][:500]
             )
 
         if not chunks:
@@ -264,18 +275,22 @@ Current Question:
             related_concepts
         )
 
-        document_context = (
-            EvidenceExtractor.extract(
-                chunks=chunks,
-                question=question,
-                max_sentences=10
-    )
-)
+        # TEMPORARY DEBUG MODE
+        # Disable EvidenceExtractor
+
+        document_context = "\n\n".join(
+            [
+                chunk["content"]
+                for chunk in chunks
+            ]
+        )
+
         print(
-            "\nCOMPRESSED CONTEXT:\n"
-)
+            "\nRAW DOCUMENT CONTEXT:\n"
+        )
+
         print(
-             document_context
+                document_context[:5000]
         )
 
         memory_context = "\n\n".join(
