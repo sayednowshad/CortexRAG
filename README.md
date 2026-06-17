@@ -13,8 +13,6 @@
 <b> 6.  Integrated Evidence Extraction to optimize token usage and improve answer grounding.  </br>
 
 
-<br>
-
 <h1 align="center"> Tech Stack 💡 </h1>
 
 <br>
@@ -41,7 +39,6 @@
 | Testing              | Postman                 | End-to-End Validation          |
 | Version Control      | Git & GitHub            | Source Management              |
 
-<br>
 
 ## Table of Contents
 
@@ -138,7 +135,7 @@ LLM --> Analytics[Analytics Dashboard]
 
 Analytics --> Answer[Response]
 ```
-<br>
+
 
 <a id="phase-01---pdf-ingestion"></a>
 <h2 align="center"> Phase 01 • Data Ingestion </h2>
@@ -164,7 +161,6 @@ D
 E[Knowledge Base]
 ```
 
-<br>
 
 <a id="phase-02---chunking-engine"></a>
 <h2 align="center"> Phase 02 • Chunking Engine </h2>
@@ -194,7 +190,6 @@ D --> F
 E --> F
 ```
 
-<br>
 
 <a id="phase-03---embedding-generation"></a>
 <h2 align="center"> Phase 03 • Embedding Generation </h2>
@@ -214,7 +209,7 @@ C[Embeddings]
 -->
 D[Vector Store]
 ```
-<br>
+
 
 <a id="phase-04---vector-database"></a>
 <h2 align="center"> Phase 04 • Vector Database </h2>
@@ -235,7 +230,7 @@ C[FAISS / Chroma]
 D[Persistent Storage]
 ```
 
-<br>
+
 
 <a id="phase-05---dense-retrieval"></a>
 <h2 align="center"> Phase 05 • Dense Retrieval </h2>
@@ -258,7 +253,7 @@ D[Vector Search]
 -->
 E[Top K Chunks]
 ```
-<br>
+
 
 <a id="phase-06---bm25-retrieval"></a>
 <h2 align="center"> Phase 06 • BM25 Retrieval </h2>
@@ -278,7 +273,7 @@ C[Keyword Matching]
 -->
 D[Top K Results]
 ```
-<br>
+
 
 <a id="phase-07---hybrid-retrieval"></a>
 <h2 align="center"> Phase 07 • Hybrid Retrieval </h2>
@@ -306,7 +301,6 @@ C --> D
 D --> E
 ```
 
-<br>
 
 <a id="phase-08---cross-encoder-reranking"></a>
 <h2 align="center"> Phase 08 • Cross Encoder Reranking </h2>
@@ -326,7 +320,7 @@ C[Relevance Scores]
 -->
 D[Top Ranked Chunks]
 ```
-<br>
+
 
 <a id="phase-09---evidence-extraction"></a>
 <h2 align="center"> Phase 09 • Evidence Extraction </h2>
@@ -346,7 +340,7 @@ C[Important Sentences]
 -->
 D[Compressed Context]
 ```
-<br>
+
 
 
 <a id="phase-10---memory-system"></a>
@@ -368,7 +362,7 @@ C[Previous Conversations]
 D[Relevant Memories]
 ```
 
-<br>
+
 
 
 <a id="phase-11---topic-tracking"></a>
@@ -391,9 +385,6 @@ C[Current Topic]
 -->
 D[Topic Tracker]
 ```
-
-<br>
-
 
 <a id="phase-12---multi-query-expansion"></a>
 <h2 align="center"> Phase 12 • Multi Query Expansion </h2>
@@ -418,7 +409,6 @@ D --> F
 E --> F
 ```
 
-<br>
 
 
 <a id="phase-13---context-builder"></a>
@@ -444,9 +434,6 @@ D --> E
 E --> F[Final Prompt Context]
 ```
 
-<br>
-
-
 <a id="phase-14---answer-generation"></a>
 <h2 align="center"> Phase 14 • Answer Generation </h2>
 <p align="center"> <b> Purpose: </b> "Generate grounded responses from retrieved knowledge." </p>
@@ -465,8 +452,6 @@ C[Generated Answer]
 -->
 D[Response Formatter]
 ```
-
-<br>
 
 <a id="phase-15---analytics-dashboard"></a>
 <h2 align="center"> Phase 15 • Analytics Dashboard </h2>
@@ -493,7 +478,7 @@ B --> G[Sources]
 B --> H[Dashboard Output]
 ```
 
-<br>
+
 
 <a id="ai-layer"></a>
 
