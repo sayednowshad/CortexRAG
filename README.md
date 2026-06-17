@@ -106,9 +106,9 @@ LLM --> Analytics[Analytics Dashboard]
 Analytics --> Answer[Response]
 ```
 
-<a id="phase-02---chunking-engine"></a>
-<h2 align="center"> Phase 02 • Chunking Engine </h2>
-<p align="center"> <b> Purpose: </b> "Convert uploaded PDFs into raw textual knowledge." </p>
+<a id="#phase-01---pdf-ingestion"></a>
+<h2 align="center"> Phase 01 • Data Ingestion </h2>
+<p align="center"> <b> Purpose: </b> "Convert uploaded PDFs into raw textual knowledge." </p> 
 
 ```mermaid
 flowchart LR
@@ -130,7 +130,8 @@ D
 E[Knowledge Base]
 ```
 
-<h2 align="center"> Phase: 02 (Chunking Engine) </h2>
+<a id="phase-02---chunking-engine"></a>
+<h2 align="center"> Phase 02 • Chunking Engine </h2>
 <p align="center"> <b> Purpose: </b> "Break large documents into searchable chunks" </p>
 
 ```mermaid
@@ -156,8 +157,8 @@ C --> F[Chunk Store]
 D --> F
 E --> F
 ```
-
-<h2 align="center"> Phase: 03 (Embedding Generation) </h2>
+<a id="phase-03---embedding-generation"></a>
+<h2 align="center"> Phase 03 • Embedding Generation </h2>
 <p align="center"> <b> Purpose: </b> "Convert text into vector representations." </p>
 
 ```mermaid
@@ -176,7 +177,8 @@ D[Vector Store]
 ```
 
 
-<h2 align="center"> Phase: 04 (Vector Database) </h2>
+<a id="phase-04---vector-database"></a>
+<h2 align="center"> Phase 04 • Vector Database </h2>
 <p align="center"> <b> Purpose: </b> "Store semantic representations for retrieval." </p>
 
 ```mermaid
@@ -195,7 +197,8 @@ D[Persistent Storage]
 ```
 
 
-<h2 align="center"> Phase: 05 (Dense Retrieval) </h2>
+<a id="phase-05---dense-retrieval"></a>
+<h2 align="center"> Phase 05 • Dense Retrieval </h2>
 <p align="center"> <b> Purpose: </b> "Semantic similarity search." </p>
 
 ```mermaid
@@ -217,7 +220,8 @@ E[Top K Chunks]
 ```
 
 
-<h2 align="center"> Phase: 06 (BM25 Retrieval) </h2>
+<a id="phase-06---bm25-retrieval"></a>
+<h2 align="center"> Phase 06 • BM25 Retrieval </h2>
 <p align="center"> <b> Purpose: </b> "Exact keyword retrieval." </p>
 
 ```mermaid
@@ -235,7 +239,8 @@ C[Keyword Matching]
 D[Top K Results]
 ```
 
-<h2 align="center"> Phase: 07 (Hybrid Retrieval) </h2>
+<a id="phase-07---hybrid-retrieval"></a>
+<h2 align="center"> Phase 07 • Hybrid Retrieval </h2>
 <p align="center"> <b> Purpose: </b> "Combine semantic and keyword search." </p>
 
 ```mermaid
@@ -260,7 +265,8 @@ C --> D
 D --> E
 ```
 
-<h2 align="center"> Phase: 08 (Cross Encoder Reranking) </h2>
+<a id="phase-08---cross-encoder-reranking"></a>
+<h2 align="center"> Phase 08 • Cross Encoder Reranking </h2>
 <p align="center"> <b> Purpose: </b> "Improve retrieval precision." </p>
 
 ```mermaid
@@ -279,7 +285,8 @@ D[Top Ranked Chunks]
 ```
 
 
-<h2 align="center"> Phase: 09 (Evidence Extraction) </h2>
+<a id="phase-09---evidence-extraction"></a>
+<h2 align="center"> Phase 09 • Evidence Extraction </h2>
 <p align="center"> <b> Purpose: </b> "Reduce unnecessary tokens." </p>
 
 ```mermaid
@@ -297,7 +304,8 @@ C[Important Sentences]
 D[Compressed Context]
 ```
 
-<h2 align="center"> Phase: 10 (Memory System) </h2>
+<a id="phase-10---memory-system"></a>
+<h2 align="center"> Phase 10 • Memory System </h2>
 <p align="center"> <b> Purpose: </b> "Maintain long-term conversation context." </p>
 
 ```mermaid
@@ -315,7 +323,8 @@ C[Previous Conversations]
 D[Relevant Memories]
 ```
 
-<h2 align="center"> Phase: 11 (Topic Tracking) </h2>
+<a id="phase-11---topic-tracking"></a>
+<h2 align="center"> Phase 11 • Topic Tracking </h2>
 <p align="center"> <b> Purpose: </b> "Resolve follow-up questions like:
 "Explain it?"
 "Compare them?"" </p>
@@ -336,7 +345,8 @@ D[Topic Tracker]
 ```
 
 
-<h2 align="center"> Phase: 12 (Multi Query Expansion) </h2>
+<a id="phase-12---multi-query-expansion"></a>
+<h2 align="center"> Phase 12 • Multi Query Expansion </h2>
 <p align="center"> <b> Purpose: </b> "Improve recall by generating multiple search queries." </p>
 
 ```mermaid
@@ -358,7 +368,8 @@ D --> F
 E --> F
 ```
 
-<h2 align="center"> Phase: 13 (Context Builder) </h2>
+<a id="phase-13---context-builder"></a>
+<h2 align="center"> Phase 13 • Context Builder </h2>
 <p align="center"> <b> Purpose: </b> "Assemble everything before LLM generation." </p>
 
 ```mermaid
@@ -380,7 +391,8 @@ D --> E
 E --> F[Final Prompt Context]
 ```
 
-<h2 align="center"> Phase: 14 (Answer Generation) </h2>
+<a id="phase-14---answer-generation"></a>
+<h2 align="center"> Phase 14 • Answer Generation </h2>
 <p align="center"> <b> Purpose: </b> "Generate grounded responses from retrieved knowledge." </p>
 
 ```mermaid
@@ -398,7 +410,8 @@ C[Generated Answer]
 D[Response Formatter]
 ```
 
-<h2 align="center"> Phase: 15 (Analytics Dashboard) </h2>
+<a id="phase-15---analytics-dashboard"></a>
+<h2 align="center"> Phase 15 • Analytics Dashboard </h2>
 <p align="center"> <b> Purpose: </b> "Observe and evaluate RAG pipeline performance." </p>
 
 ```mermaid
