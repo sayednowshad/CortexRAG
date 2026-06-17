@@ -20,100 +20,75 @@
 <br>
 
 <table align="center">
+
 <tr>
-<th>Layer</th>
+<th>Category</th>
 <th>Technology</th>
-<th>Purpose</th>
 </tr>
 
 <tr>
-<td><b>Backend Framework</b></td>
-<td>FastAPI</td>
-<td>REST API Development & RAG Orchestration</td>
-</tr>
-
-<tr>
-<td><b>Programming Language</b></td>
+<td><b>Language</b></td>
 <td>Python</td>
-<td>Core Application Development</td>
+</tr>
+
+<tr>
+<td><b>Backend</b></td>
+<td>FastAPI</td>
 </tr>
 
 <tr>
 <td><b>LLM</b></td>
 <td>Hugging Face Inference API</td>
-<td>Answer Generation</td>
 </tr>
 
 <tr>
 <td><b>Embeddings</b></td>
 <td>Sentence Transformers</td>
-<td>Semantic Vector Representation</td>
 </tr>
 
 <tr>
 <td><b>Vector Database</b></td>
 <td>FAISS</td>
-<td>Dense Similarity Search</td>
 </tr>
 
 <tr>
-<td><b>Keyword Retrieval</b></td>
-<td>BM25</td>
-<td>Sparse Keyword Search</td>
-</tr>
-
-<tr>
-<td><b>Hybrid Retrieval</b></td>
-<td>Dense + BM25 Fusion</td>
-<td>Improved Retrieval Recall</td>
+<td><b>Retrieval</b></td>
+<td>Dense Search + BM25 + Hybrid Retrieval</td>
 </tr>
 
 <tr>
 <td><b>Reranking</b></td>
 <td>Cross Encoder</td>
-<td>Relevance Optimization</td>
 </tr>
 
 <tr>
 <td><b>Knowledge Graph</b></td>
 <td>NetworkX</td>
-<td>Query Expansion & Concept Linking</td>
 </tr>
 
 <tr>
-<td><b>Memory Layer</b></td>
-<td>Custom Memory Engine</td>
-<td>Conversation Persistence</td>
+<td><b>Memory System</b></td>
+<td>Conversation Memory Engine</td>
 </tr>
 
 <tr>
 <td><b>Document Processing</b></td>
-<td>PyPDF2 / PDFPlumber</td>
-<td>PDF Text Extraction</td>
-</tr>
-
-<tr>
-<td><b>Analytics</b></td>
-<td>Custom Analytics Dashboard</td>
-<td>Latency & Retrieval Monitoring</td>
+<td>PyPDF2, PDFPlumber</td>
 </tr>
 
 <tr>
 <td><b>Backend Integration</b></td>
 <td>Spring Boot</td>
-<td>Enterprise Backend Connectivity</td>
 </tr>
 
 <tr>
-<td><b>Testing Tool</b></td>
+<td><b>API Testing</b></td>
 <td>Postman</td>
-<td>API Testing & Validation</td>
 </tr>
 
 <tr>
 <td><b>Version Control</b></td>
-<td>Git & GitHub</td>
-<td>Source Code Management</td>
+<td>Git, GitHub</td>
 </tr>
 
 </table>
@@ -141,11 +116,13 @@
 - [Phase 13 - Context Builder](#phase-13---context-builder)
 - [Phase 14 - Answer Generation](#phase-14---answer-generation)
 - [Phase 15 - Analytics Dashboard](#phase-15---analytics-dashboard)
-- 
-- [PostMan Fronend Testing](#huggingface)
-- [PostMan Fronend Testing](#postman)
-- [Backend SpringBoot](#Springboot)
-- [RAG Trasnparent Metrics](#rag-pipeline)
+
+## Screenshots & Demonstrations
+- [AI Layer](#ai-layer)
+- [Hugging Face Dashboard](#huggingface)
+- [Postman Testing](#postman)
+- [Spring Boot Integration](#springboot)
+- [RAG Analytics Dashboard](#rag-pipeline)
 
 
 <h2 align="center"> Complete RAG Architecture </h2>
@@ -215,7 +192,7 @@ LLM --> Analytics[Analytics Dashboard]
 Analytics --> Answer[Response]
 ```
 
-<a id="#phase-01---pdf-ingestion"></a>
+<a id="phase-01---pdf-ingestion"></a>
 <h2 align="center"> Phase 01 • Data Ingestion </h2>
 <p align="center"> <b> Purpose: </b> "Convert uploaded PDFs into raw textual knowledge." </p> 
 
@@ -544,6 +521,8 @@ B --> G[Sources]
 B --> H[Dashboard Output]
 ```
 
+<a id="ai-layer"></a>
+
 <table align="center">
 
   <h2 align="center"> AI Layer • (FastAPI + RAG + LLM) </h2>
@@ -578,10 +557,10 @@ B --> H[Dashboard Output]
 </tr>
 </table>
 
----------
+
+<a id="huggingface"></a>
 <br>
 <br>
-<a id="#huggingface"></a>
 
 <table align="center">
 
@@ -602,11 +581,11 @@ B --> H[Dashboard Output]
 </tr>
 
 </table>
----------------------
+
+<a id="postman"></a>
 <br>
 <br>
 
-<a id="#postman"></a>
 <table align="center">
 
   <h2 align="center"> PostMan Dashboard • Frontend (Testing) </h2>
@@ -633,8 +612,8 @@ B --> H[Dashboard Output]
 </tr>
 </table>
 
---------------
-<a id="#Springboot"></a>
+<a id="springboot"></a>
+
 <br>
 <br>
 <table align="center">
@@ -652,8 +631,7 @@ B --> H[Dashboard Output]
 </tr>
 </table>
 
-------------------
-<a id="#rag-pipeline"></a>
+<a id="rag-pipeline"></a>
 <br>
 <br>
 
