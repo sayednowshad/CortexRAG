@@ -1,7 +1,7 @@
-<h1> Knowledge Intelligence Engine (KIE) </h1>
+<h1 align="center"> CortexRAG </h1>
 
 <h3>
-  Advanced Retrieval-Augmented Generation Platform
+  Memory-Augmented Hybrid Retrieval Intelligence Platform
 </h3>
 
 
