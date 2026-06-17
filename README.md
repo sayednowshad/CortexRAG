@@ -13,6 +13,113 @@
 <b> 6.  Integrated Evidence Extraction to optimize token usage and improve answer grounding.  </br>
 
 
+<br>
+
+<h2 align="center"> Tech Stack </h2>
+
+<br>
+
+<table align="center">
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td><b>Backend Framework</b></td>
+<td>FastAPI</td>
+<td>REST API Development & RAG Orchestration</td>
+</tr>
+
+<tr>
+<td><b>Programming Language</b></td>
+<td>Python</td>
+<td>Core Application Development</td>
+</tr>
+
+<tr>
+<td><b>LLM</b></td>
+<td>Hugging Face Inference API</td>
+<td>Answer Generation</td>
+</tr>
+
+<tr>
+<td><b>Embeddings</b></td>
+<td>Sentence Transformers</td>
+<td>Semantic Vector Representation</td>
+</tr>
+
+<tr>
+<td><b>Vector Database</b></td>
+<td>FAISS</td>
+<td>Dense Similarity Search</td>
+</tr>
+
+<tr>
+<td><b>Keyword Retrieval</b></td>
+<td>BM25</td>
+<td>Sparse Keyword Search</td>
+</tr>
+
+<tr>
+<td><b>Hybrid Retrieval</b></td>
+<td>Dense + BM25 Fusion</td>
+<td>Improved Retrieval Recall</td>
+</tr>
+
+<tr>
+<td><b>Reranking</b></td>
+<td>Cross Encoder</td>
+<td>Relevance Optimization</td>
+</tr>
+
+<tr>
+<td><b>Knowledge Graph</b></td>
+<td>NetworkX</td>
+<td>Query Expansion & Concept Linking</td>
+</tr>
+
+<tr>
+<td><b>Memory Layer</b></td>
+<td>Custom Memory Engine</td>
+<td>Conversation Persistence</td>
+</tr>
+
+<tr>
+<td><b>Document Processing</b></td>
+<td>PyPDF2 / PDFPlumber</td>
+<td>PDF Text Extraction</td>
+</tr>
+
+<tr>
+<td><b>Analytics</b></td>
+<td>Custom Analytics Dashboard</td>
+<td>Latency & Retrieval Monitoring</td>
+</tr>
+
+<tr>
+<td><b>Backend Integration</b></td>
+<td>Spring Boot</td>
+<td>Enterprise Backend Connectivity</td>
+</tr>
+
+<tr>
+<td><b>Testing Tool</b></td>
+<td>Postman</td>
+<td>API Testing & Validation</td>
+</tr>
+
+<tr>
+<td><b>Version Control</b></td>
+<td>Git & GitHub</td>
+<td>Source Code Management</td>
+</tr>
+
+</table>
+
+<br>
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -36,7 +143,7 @@
 - [Phase 15 - Analytics Dashboard](#phase-15---analytics-dashboard)
 - [Backend Screenshots](#backend-screenshots)
 - [Testing Results](#testing-results)
-- [Future Improvements](#future-improvements)
+- [RAG Trasnparent Metrics](#rag-pipeline)
 
 
 <h2 align="center"> Complete RAG Architecture </h2>
@@ -435,3 +542,129 @@ B --> G[Sources]
 B --> H[Dashboard Output]
 ```
 
+<table align="center">
+
+  <h2 align="center"> AI Layer • (FastAPI + RAG + LLM) </h2>
+
+<tr>
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/07b2bc8a-7198-4e83-9a32-9aae304ca2cf">
+<br>
+<p align="center"><b>Document Ingestion</b></p>
+</td>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/90a873c9-674a-41ba-9e7b-90dd9aa7dd10">
+<br>
+<p align="center"><b>Chunks, Vector Storage, Collection Size (Meta Data)</b></p>
+</td>
+</tr>
+
+<tr>
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/6533451b-48b2-4339-8a38-c1d38459f8ed">
+<br>
+<p align="center"><b>Retrieval Pipeline Logs</b></p>
+</td>
+
+<td>
+
+<img width="500" src="https://github.com/user-attachments/assets/75d0093b-30f6-493b-b0a4-6eb3ecf9e0c1" />
+<br>
+<p align="center"><b> Upload, Serach, Chat </b></p>
+</td>
+</tr>
+</table>
+
+<br>
+<br>
+
+
+<table align="center">
+
+  <h2 align="center"> Hugging Face • (API Dashboard) </h2>
+
+<tr>
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/5614fb90-d407-4779-b444-95fce0649fb5">
+<br>
+<p align="center"><b> API Cost • Inference Dashboard </b></p>
+</td>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/5a835f73-84e2-46e6-8d40-7ac54dd09716">
+<br>
+<p align="center"><b> Phi-3-mini-4K • 3B+ </b></p>
+</td>
+</tr>
+
+</table>
+
+<br>
+<br>
+
+
+<table align="center">
+
+  <h2 align="center"> PostMan Dashboard • Frontend (Testing) </h2>
+
+<tr>
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/d1122497-db2f-4a0d-bfae-2ddddd47b2a0">
+<br>
+<p align="center"><b> /api/Chat 200K </b></p>
+</td>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/1e139df2-3bb1-4eb6-96c1-56de1aec5381">
+<br>
+<p align="center"><b> User Query -01  </b></p>
+</td>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/af2678a0-966e-4ed9-86da-2f732d41301c">
+<br>
+<p align="center"><b> User Query - 02 </b></p>
+</td>
+
+</tr>
+</table>
+
+<br>
+<br>
+
+
+<table align="center">
+
+  <h2 align="center"> Backend • (Spring Boot) </h2>
+
+<tr>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/ba144b35-3493-438e-af7d-e293fcc38f1e">
+<br>
+<p align="center"><b> Spring Boot Connection with RAG Pipeline </b></p>
+</td>
+
+</tr>
+</table>
+
+<br>
+<br>
+
+<a id="#rag-pipeline"></a>
+<table align="center">
+  <h2 align="center"> RAG Pipeline • (Metric Analysis Dashboard) </h2>
+<tr>
+
+<td>
+<img width="500" src="https://github.com/user-attachments/assets/fbca06d7-f3e7-4bf6-b184-ffa02c779e0e">
+<br>
+<p align="center"> <b> Benchmark Testing, Metric Analysis </b> </p>
+</td>
+
+</tr>
+</table>
+
+<br>
+<br>
