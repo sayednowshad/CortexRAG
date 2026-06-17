@@ -19,87 +19,32 @@
 
 <br>
 
-<table align="center">
-
-<tr>
-<th>Category</th>
-<th>Technology</th>
-</tr>
-
-<tr>
-<td><b>Language</b></td>
-<td>Python</td>
-</tr>
-
-<tr>
-<td><b>Backend</b></td>
-<td>FastAPI</td>
-</tr>
-
-<tr>
-<td><b>LLM</b></td>
-<td>Hugging Face Inference API</td>
-</tr>
-
-<tr>
-<td><b>Embeddings</b></td>
-<td>Sentence Transformers</td>
-</tr>
-
-<tr>
-<td><b>Vector Database</b></td>
-<td>FAISS</td>
-</tr>
-
-<tr>
-<td><b>Retrieval</b></td>
-<td>Dense Search + BM25 + Hybrid Retrieval</td>
-</tr>
-
-<tr>
-<td><b>Reranking</b></td>
-<td>Cross Encoder</td>
-</tr>
-
-<tr>
-<td><b>Knowledge Graph</b></td>
-<td>NetworkX</td>
-</tr>
-
-<tr>
-<td><b>Memory System</b></td>
-<td>Conversation Memory Engine</td>
-</tr>
-
-<tr>
-<td><b>Document Processing</b></td>
-<td>PyPDF2, PDFPlumber</td>
-</tr>
-
-<tr>
-<td><b>Backend Integration</b></td>
-<td>Spring Boot</td>
-</tr>
-
-<tr>
-<td><b>API Testing</b></td>
-<td>Postman</td>
-</tr>
-
-<tr>
-<td><b>Version Control</b></td>
-<td>Git, GitHub</td>
-</tr>
-
-</table>
+| Component            | Technology              | Strategy                       |
+| -------------------- | ----------------------- | ------------------------------ |
+| PDF Ingestion        | PDFPlumber              | Document Knowledge Extraction  |
+| Chunking Engine      | Custom Chunker          | Context Preservation           |
+| Embedding Generation | Sentence Transformers   | Semantic Encoding              |
+| Vector Database      | FAISS                   | Dense Vector Retrieval         |
+| Keyword Search       | BM25                    | Sparse Retrieval               |
+| Hybrid Retrieval     | FAISS + BM25            | Retrieval Fusion               |
+| Multi Query          | Query Expansion Service | Recall Improvement             |
+| Knowledge Graph      | NetworkX                | Semantic Graph Expansion       |
+| Reranking            | Cross Encoder           | Relevance Optimization         |
+| Evidence Extraction  | Evidence Extractor      | Context Compression            |
+| Memory Retrieval     | Memory Engine           | Long-Term Memory               |
+| Topic Tracking       | Topic Tracker           | Conversational Context         |
+| Memory Deduplication | Deduplicator            | Duplicate Prevention           |
+| Context Builder      | Prompt Assembly Engine  | Context Aggregation            |
+| Answer Generation    | Phi-3 Mini              | Retrieval-Augmented Generation |
+| Analytics Dashboard  | Custom Analytics        | Pipeline Monitoring            |
+| Backend Integration  | Spring Boot             | Enterprise API Integration     |
+| Testing              | Postman                 | End-to-End Validation          |
+| Version Control      | Git & GitHub            | Source Management              |
 
 <br>
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [System Architecture](#system-architecture)
-- [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Phase 01 - PDF Ingestion](#phase-01---pdf-ingestion)
 - [Phase 02 - Chunking Engine](#phase-02---chunking-engine)
@@ -116,6 +61,9 @@
 - [Phase 13 - Context Builder](#phase-13---context-builder)
 - [Phase 14 - Answer Generation](#phase-14---answer-generation)
 - [Phase 15 - Analytics Dashboard](#phase-15---analytics-dashboard)
+  
+<br>
+<br>
 
 ## Screenshots & Demonstrations
 - [AI Layer](#ai-layer)
@@ -125,6 +73,7 @@
 - [RAG Analytics Dashboard](#rag-pipeline)
 
 
+<a id="project-structure"></a>
 <h2 align="center"> Complete RAG Architecture </h2>
 
 ```mermaid
@@ -191,6 +140,8 @@ LLM --> Analytics[Analytics Dashboard]
 
 Analytics --> Answer[Response]
 ```
+<br>
+<br>
 
 <a id="phase-01---pdf-ingestion"></a>
 <h2 align="center"> Phase 01 • Data Ingestion </h2>
@@ -215,6 +166,9 @@ D
 -->
 E[Knowledge Base]
 ```
+
+<br>
+<br>
 
 <a id="phase-02---chunking-engine"></a>
 <h2 align="center"> Phase 02 • Chunking Engine </h2>
@@ -243,6 +197,10 @@ C --> F[Chunk Store]
 D --> F
 E --> F
 ```
+
+<br>
+<br>
+
 <a id="phase-03---embedding-generation"></a>
 <h2 align="center"> Phase 03 • Embedding Generation </h2>
 <p align="center"> <b> Purpose: </b> "Convert text into vector representations." </p>
@@ -261,7 +219,8 @@ C[Embeddings]
 -->
 D[Vector Store]
 ```
-
+<br>
+<br>
 
 <a id="phase-04---vector-database"></a>
 <h2 align="center"> Phase 04 • Vector Database </h2>
@@ -281,7 +240,8 @@ C[FAISS / Chroma]
 -->
 D[Persistent Storage]
 ```
-
+<br>
+<br>
 
 <a id="phase-05---dense-retrieval"></a>
 <h2 align="center"> Phase 05 • Dense Retrieval </h2>
@@ -304,7 +264,8 @@ D[Vector Search]
 -->
 E[Top K Chunks]
 ```
-
+<br>
+<br>
 
 <a id="phase-06---bm25-retrieval"></a>
 <h2 align="center"> Phase 06 • BM25 Retrieval </h2>
@@ -324,6 +285,8 @@ C[Keyword Matching]
 -->
 D[Top K Results]
 ```
+<br>
+<br>
 
 <a id="phase-07---hybrid-retrieval"></a>
 <h2 align="center"> Phase 07 • Hybrid Retrieval </h2>
@@ -351,6 +314,9 @@ C --> D
 D --> E
 ```
 
+<br>
+<br>
+
 <a id="phase-08---cross-encoder-reranking"></a>
 <h2 align="center"> Phase 08 • Cross Encoder Reranking </h2>
 <p align="center"> <b> Purpose: </b> "Improve retrieval precision." </p>
@@ -369,7 +335,8 @@ C[Relevance Scores]
 -->
 D[Top Ranked Chunks]
 ```
-
+<br>
+<br>
 
 <a id="phase-09---evidence-extraction"></a>
 <h2 align="center"> Phase 09 • Evidence Extraction </h2>
@@ -389,6 +356,8 @@ C[Important Sentences]
 -->
 D[Compressed Context]
 ```
+<br>
+<br>
 
 <a id="phase-10---memory-system"></a>
 <h2 align="center"> Phase 10 • Memory System </h2>
@@ -408,6 +377,9 @@ C[Previous Conversations]
 -->
 D[Relevant Memories]
 ```
+
+<br>
+<br>
 
 <a id="phase-11---topic-tracking"></a>
 <h2 align="center"> Phase 11 • Topic Tracking </h2>
@@ -430,6 +402,8 @@ C[Current Topic]
 D[Topic Tracker]
 ```
 
+<br>
+<br>
 
 <a id="phase-12---multi-query-expansion"></a>
 <h2 align="center"> Phase 12 • Multi Query Expansion </h2>
@@ -454,6 +428,9 @@ D --> F
 E --> F
 ```
 
+<br>
+<br>
+
 <a id="phase-13---context-builder"></a>
 <h2 align="center"> Phase 13 • Context Builder </h2>
 <p align="center"> <b> Purpose: </b> "Assemble everything before LLM generation." </p>
@@ -477,6 +454,9 @@ D --> E
 E --> F[Final Prompt Context]
 ```
 
+<br>
+<br>
+
 <a id="phase-14---answer-generation"></a>
 <h2 align="center"> Phase 14 • Answer Generation </h2>
 <p align="center"> <b> Purpose: </b> "Generate grounded responses from retrieved knowledge." </p>
@@ -495,6 +475,9 @@ C[Generated Answer]
 -->
 D[Response Formatter]
 ```
+
+<br>
+<br>
 
 <a id="phase-15---analytics-dashboard"></a>
 <h2 align="center"> Phase 15 • Analytics Dashboard </h2>
@@ -520,6 +503,9 @@ B --> G[Sources]
 
 B --> H[Dashboard Output]
 ```
+
+<br>
+<br>
 
 <a id="ai-layer"></a>
 
@@ -556,7 +542,6 @@ B --> H[Dashboard Output]
 </td>
 </tr>
 </table>
-
 
 <a id="huggingface"></a>
 <br>
