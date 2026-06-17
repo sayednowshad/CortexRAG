@@ -1,7 +1,7 @@
 <h1 align="center"> ⚡CortexRAG ⚡ </h1>
 
-<h3>
-  Memory-Augmented Hybrid Retrieval Intelligence Platform
+<h3 align="center">
+  "Memory-Augmented Hybrid Retrieval Intelligence Platform"
 </h3>
 
 
