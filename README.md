@@ -1,4 +1,4 @@
-<h1 align="center"> CortexRAG </h1>
+<h1 align="center"> ⚡CortexRAG ⚡ </h1>
 
 <h3>
   Memory-Augmented Hybrid Retrieval Intelligence Platform
@@ -15,7 +15,7 @@
 
 <br>
 
-<h2 align="center"> Tech Stack </h2>
+<h1 align="center"> Tech Stack 💡 </h1>
 
 <br>
 
@@ -62,8 +62,6 @@
 - [Phase 14 - Answer Generation](#phase-14---answer-generation)
 - [Phase 15 - Analytics Dashboard](#phase-15---analytics-dashboard)
   
-<br>
-<br>
 
 ## Screenshots & Demonstrations
 - [AI Layer](#ai-layer)
@@ -141,7 +139,6 @@ LLM --> Analytics[Analytics Dashboard]
 Analytics --> Answer[Response]
 ```
 <br>
-<br>
 
 <a id="phase-01---pdf-ingestion"></a>
 <h2 align="center"> Phase 01 • Data Ingestion </h2>
@@ -167,7 +164,6 @@ D
 E[Knowledge Base]
 ```
 
-<br>
 <br>
 
 <a id="phase-02---chunking-engine"></a>
@@ -199,7 +195,6 @@ E --> F
 ```
 
 <br>
-<br>
 
 <a id="phase-03---embedding-generation"></a>
 <h2 align="center"> Phase 03 • Embedding Generation </h2>
@@ -220,7 +215,6 @@ C[Embeddings]
 D[Vector Store]
 ```
 <br>
-<br>
 
 <a id="phase-04---vector-database"></a>
 <h2 align="center"> Phase 04 • Vector Database </h2>
@@ -240,7 +234,7 @@ C[FAISS / Chroma]
 -->
 D[Persistent Storage]
 ```
-<br>
+
 <br>
 
 <a id="phase-05---dense-retrieval"></a>
@@ -265,7 +259,6 @@ D[Vector Search]
 E[Top K Chunks]
 ```
 <br>
-<br>
 
 <a id="phase-06---bm25-retrieval"></a>
 <h2 align="center"> Phase 06 • BM25 Retrieval </h2>
@@ -285,7 +278,6 @@ C[Keyword Matching]
 -->
 D[Top K Results]
 ```
-<br>
 <br>
 
 <a id="phase-07---hybrid-retrieval"></a>
@@ -315,7 +307,6 @@ D --> E
 ```
 
 <br>
-<br>
 
 <a id="phase-08---cross-encoder-reranking"></a>
 <h2 align="center"> Phase 08 • Cross Encoder Reranking </h2>
@@ -335,7 +326,6 @@ C[Relevance Scores]
 -->
 D[Top Ranked Chunks]
 ```
-<br>
 <br>
 
 <a id="phase-09---evidence-extraction"></a>
@@ -357,7 +347,7 @@ C[Important Sentences]
 D[Compressed Context]
 ```
 <br>
-<br>
+
 
 <a id="phase-10---memory-system"></a>
 <h2 align="center"> Phase 10 • Memory System </h2>
@@ -379,7 +369,7 @@ D[Relevant Memories]
 ```
 
 <br>
-<br>
+
 
 <a id="phase-11---topic-tracking"></a>
 <h2 align="center"> Phase 11 • Topic Tracking </h2>
@@ -403,7 +393,7 @@ D[Topic Tracker]
 ```
 
 <br>
-<br>
+
 
 <a id="phase-12---multi-query-expansion"></a>
 <h2 align="center"> Phase 12 • Multi Query Expansion </h2>
@@ -429,7 +419,7 @@ E --> F
 ```
 
 <br>
-<br>
+
 
 <a id="phase-13---context-builder"></a>
 <h2 align="center"> Phase 13 • Context Builder </h2>
@@ -455,7 +445,7 @@ E --> F[Final Prompt Context]
 ```
 
 <br>
-<br>
+
 
 <a id="phase-14---answer-generation"></a>
 <h2 align="center"> Phase 14 • Answer Generation </h2>
@@ -476,7 +466,6 @@ C[Generated Answer]
 D[Response Formatter]
 ```
 
-<br>
 <br>
 
 <a id="phase-15---analytics-dashboard"></a>
@@ -504,7 +493,6 @@ B --> G[Sources]
 B --> H[Dashboard Output]
 ```
 
-<br>
 <br>
 
 <a id="ai-layer"></a>
